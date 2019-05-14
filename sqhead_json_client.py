@@ -45,7 +45,7 @@ class Client:
     # Send command via API to get data
     def on_open(self, ws):
         print("Opening Connection")
-        self.ws.send(json.dumps({"command": "InitDetectorStream", "id": "command-0"}))
+        self.ws.send(json.dumps({"command": "xxxxxxxxx", "id": "xxxxxxxxxxx"}))
         return
 
     # On message function
@@ -98,7 +98,7 @@ class Client:
 
         try:
             while(self.ws.sock.connected):
-                self.ws.send(json.dumps({"command": "UpdateDataFilter", "attribute": {"videoBandWidthLimit": 1000000}}))
+                self.ws.send(json.dumps({"command": "xxxxxx", "xxxxxxxx": {"videoBandWidthLimit": xxxxxx}}))
                 sleep(1)
                 msg_count += 1
         except KeyboardInterrupt:
@@ -108,15 +108,14 @@ class Client:
 
 # Adds arguments for cmd execution
 parser = argparse.ArgumentParser()
-parser.add_argument("--host", help="ip address or hostname of device", default="10.8.0.93")
-parser.add_argument("--json_dir", help="directory to save json data", default=".\\sqhead_json_logs")
-parser.add_argument("--port", help="port used to connect to api", type=int, default=8081)
-parser.add_argument("--endpoint", help="api endpoint", default="tracking")
+parser.add_argument("--host", help="ip address or hostname of device", default="xxxxxxxxxx")
+parser.add_argument("--json_dir", help="directory to save json data", default=".\\xxxxxxxx")
+parser.add_argument("--port", help="port used to connect to api", type=int, default=xxxx)
+parser.add_argument("--endpoint", help="api endpoint", default="xxxxxxx")
 args = parser.parse_args()
 
 # Set URL to arguments for websocket connection
 url = "ws://{}:{}/{}".format(args.host, args.port, args.endpoint)
-#url = "ws://10.8.0.93:8081/tracking"
 
 c = Client(url, args.json_dir)
 c.start()
